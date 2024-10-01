@@ -103,6 +103,7 @@ if fish_counter <3:
                     print('Inventory full, selling...')  # Translated "Inventar voll, verkaufe..." to "Inventory full, selling..."
                     # Stop the main loop and focus on clicking the specified location
                     pyautogui.moveTo(1214, 959, duration=1)  # Move mouse to X=1215, Y=9484
+                    click
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
                     time.sleep(random.uniform(0.001, 0.005))
                     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
@@ -131,7 +132,6 @@ if fish_counter <3:
                     fish_counter = 0
                     # Wait a moment before continuing to check for new fish
                     time.sleep(2)
-                    continue  # Go back to the start of the main loop
                 elif fish_counter <=3:
                     time.sleep(2)
                     double_click_random_throw()  # Throw the reel again after counting the fish
