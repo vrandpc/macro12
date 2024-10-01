@@ -80,77 +80,78 @@ fish_found = False
 
 # Main loop to check for fish and bubbles until 'q' is pressed
 # Hauptloop, um nach Fischen und Blasen zu suchen, bis 'q' gedrückt wird
-while keyboard.is_pressed('q') == False:
-    # Check if fish is found
-    # Überprüfen, ob ein Fisch gefunden wurde
-    if pyautogui.pixel(847, 820)[0] == 255 or pyautogui.pixel(860, 800)[0] == 255:
-        # Reel in the fish
-        # Den Fisch einholen
-        click_random_throw()
-        counter = get_counter()
-        fish_found = True
-
-    # Increase fish counter if found
-    # Fischzähler erhöhen, wenn gefunden
-    if fish_found == True:
-        if pyautogui.pixel(830, 800) != (83, 250, 83):
-            fish_counter += 1
-            print('Fish caught: ' + str(fish_counter))  # Translated "Fische gefangen" to "Fish caught"
-            fish_found = False
-            time.sleep(1)  # Sleep for 1 second after counting the fish
-            if fish_counter == 3:
-                print('Inventory full, selling...')  # Translated "Inventar voll, verkaufe..." to "Inventory full, selling..."
-                # Stop the main loop and focus on clicking the specified location
-                pyautogui.moveTo(1214, 959, duration=1)  # Move mouse to X=1215, Y=9484
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-                time.sleep(random.uniform(0.001, 0.005))
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-                time.sleep(3)
-                click(1082, 343)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-                time.sleep(random.uniform(0.001, 0.005))
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-                time.sleep(3)
-                click(1232, 420)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-                time.sleep(random.uniform(0.001, 0.005))
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-                time.sleep(3)
-                click(1151, 421)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-                time.sleep(random.uniform(0.001, 0.005))
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-                time.sleep(3)
-                click(1395, 360)
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
-                time.sleep(random.uniform(0.001, 0.005))
-                win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
-                time.sleep(3)
-                # Reset fish counter to allow for further fishing
-                fish_counter = 0
-                # Wait a moment before continuing to check for new fish
-                time.sleep(2)
-                continue  # Go back to the start of the main loop
-            elif fish_counter <=3:
-                time.sleep(2)
-                double_click_random_throw()  # Throw the reel again after counting the fish
-
-    # If fish not found, check for air bubbles
-    # Wenn kein Fisch gefunden wurde, nach Luftblasen suchen
-    if fish_found == False:
-        if check_air_bubbles_on_screen() == True:
+if fish_counter <3:
+    while keyboard.is_pressed('q') == False:
+        # Check if fish is found
+        # Überprüfen, ob ein Fisch gefunden wurde
+        if pyautogui.pixel(847, 820)[0] == 255 or pyautogui.pixel(860, 800)[0] == 255:
             # Reel in the fish
             # Den Fisch einholen
             click_random_throw()
             counter = get_counter()
             fish_found = True
 
-    if counter == 0:
-        # Cast or reel in the fishing rod
-        # Angel auswerfen oder einholen
-        time.sleep(2)
-        double_click_random_throw()
-        counter = get_counter()
+        # Increase fish counter if found
+        # Fischzähler erhöhen, wenn gefunden
+        if fish_found == True:
+            if pyautogui.pixel(830, 800) != (83, 250, 83):
+                fish_counter += 1
+                print('Fish caught: ' + str(fish_counter))  # Translated "Fische gefangen" to "Fish caught"
+                fish_found = False
+                time.sleep(1)  # Sleep for 1 second after counting the fish
+                if fish_counter == 3:
+                    print('Inventory full, selling...')  # Translated "Inventar voll, verkaufe..." to "Inventory full, selling..."
+                    # Stop the main loop and focus on clicking the specified location
+                    pyautogui.moveTo(1214, 959, duration=1)  # Move mouse to X=1215, Y=9484
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+                    time.sleep(random.uniform(0.001, 0.005))
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+                    time.sleep(3)
+                    click(1082, 343)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+                    time.sleep(random.uniform(0.001, 0.005))
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+                    time.sleep(3)
+                    click(1232, 420)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+                    time.sleep(random.uniform(0.001, 0.005))
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+                    time.sleep(3)
+                    click(1151, 421)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+                    time.sleep(random.uniform(0.001, 0.005))
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+                    time.sleep(3)
+                    click(1395, 360)
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0)
+                    time.sleep(random.uniform(0.001, 0.005))
+                    win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0)
+                    time.sleep(3)
+                    # Reset fish counter to allow for further fishing
+                    fish_counter = 0
+                    # Wait a moment before continuing to check for new fish
+                    time.sleep(2)
+                    continue  # Go back to the start of the main loop
+                elif fish_counter <=3:
+                    time.sleep(2)
+                    double_click_random_throw()  # Throw the reel again after counting the fish
 
-    counter -= 1
-    time.sleep(0.025)
+        # If fish not found, check for air bubbles
+        # Wenn kein Fisch gefunden wurde, nach Luftblasen suchen
+        if fish_found == False:
+            if check_air_bubbles_on_screen() == True:
+                # Reel in the fish
+                # Den Fisch einholen
+                click_random_throw()
+                counter = get_counter()
+                fish_found = True
+
+        if counter == 0:
+            # Cast or reel in the fishing rod
+            # Angel auswerfen oder einholen
+            time.sleep(2)
+            double_click_random_throw()
+            counter = get_counter()
+
+        counter -= 1
+        time.sleep(0.025)
